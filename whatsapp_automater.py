@@ -6,25 +6,77 @@ import time
 import os
 import datetime
 
+##############################################################################
+#change your Name here:
 your_name = "Ali"
+#change the salutation here:
+custom_salutations = "As Salam Wa Alaykum, "
+##############################################################################
+
+#DO NOT CHANGE THE CODE BELOW
 d_ = datetime.datetime.now()
 month = d_.strftime("%B")
 your_name_ = your_name.replace(" ", "_")
-file_name = your_name_+"_chat_list_" + month + ".txt"
+file_name = "Archive/"+your_name_+"_chat_list_" + month + ".txt"
 list_1 = []
 fnd_m_list = []
 fnd_nm_list = []
+greeting_message_family = []
+greeting_message_m_friends = []
+greeting_message_nm_friends = []
+
+def update_chats():
+    here_is_us = os.getcwd()
+    os.chdir(here_is_us)
+
+    if len(greeting_message_family) == 0:
+        print("Updating the chat templates for Family")
+        # update the family chat template list
+        file_a = open('chat_templates/chats_1.txt', 'r')
+        line_f = file_a.readlines()
+        for names_list_1 in line_f:
+            if names_list_1 not in greeting_message_family:
+                greeting_message_family.append(names_list_1)
+        file_a.close()
+    else:
+        pass
+
+    if len(greeting_message_m_friends) == 0:
+        print("Updating the chat templates for Friends_1")
+        # update the friends_1 chat template list
+        file_m = open('chat_templates/chats_2.txt', 'r')
+        line_m = file_m.readlines()
+        for fnd_m in line_m:
+            if fnd_m not in greeting_message_m_friends:
+                greeting_message_m_friends.append(fnd_m)
+        file_m.close()
+    else:
+        pass
+    if len(greeting_message_nm_friends) == 0:
+        print("Updating the chat templates for Friends_2")
+        # update the friends_2 chat template list
+        file_nm = open('chat_templates/chats_3.txt', 'r')
+        line_nm = file_nm.readlines()
+        for fnd_nm in line_nm:
+            if fnd_nm not in greeting_message_nm_friends:
+                greeting_message_nm_friends.append(fnd_nm)
+        file_nm.close()
+    else:
+        pass
+
 
 def update_list():
-    os.chdir("/Users/alikhundmiri/Desktop/pythons/chat_remainder/Archive")
+    # os.chdir("Archive")
     #if file for month doesnt exist, make one
     if not os.path.isfile(file_name):
         write_txt(file_name, "")
 
-    file_chats = open('/Users/alikhundmiri/Desktop/pythons/chat_remainder/Archive/'+your_name+'_chat_list_'+ d_.strftime("%B")+'.txt','r')
+    file_chats = open(file_name,'r')
     fc = file_chats.read()
 
-    file_a = open('/Users/alikhundmiri/Desktop/pythons/chat_remainder/List/family.txt', 'r')
+    #c1 = os.path.join(script_dir, contact_1)
+    #file_a = open(c1, 'r')
+    file_a = open('List/family.txt', 'r')
     line_f = file_a.readlines()
     for names_list_1 in line_f:
         if names_list_1 not in list_1:
@@ -33,7 +85,7 @@ def update_list():
     file_a.close()
 
     # update the friends M list
-    file_m = open('/Users/alikhundmiri/Desktop/pythons/chat_remainder/List/friends_m.txt', 'r')
+    file_m = open('List/friends_m.txt', 'r')
     line_m = file_m.readlines()
     for fnd_m in line_m:
         if fnd_m not in fnd_m_list:
@@ -42,7 +94,7 @@ def update_list():
     file_m.close()
 
     # Update the friends NM list
-    file_nm = open('/Users/alikhundmiri/Desktop/pythons/chat_remainder/List/friends_nm.txt', 'r')
+    file_nm = open('List/friends_nm.txt', 'r')
     line_nm = file_nm.readlines()
     for fnd_nm in line_nm:
         if fnd_nm not in fnd_nm_list:
@@ -50,7 +102,6 @@ def update_list():
                 fnd_nm_list.append(fnd_nm)
     file_nm.close()
     file_chats.close()
-
 
 def web_driver_load():
     global driver
@@ -74,6 +125,7 @@ def fail_to_login():
 
 def exhausted_the_list():
     print("Hey! "+your_name+"!, You have Exhausted the chat list for the month of " + d_.strftime("%B")+".")
+    print("Closing the Script...")
     exit()
 
 def generate_abc(length):
@@ -103,6 +155,10 @@ def start_timer():
     print('You Have a total of '+str(f_len + m_list + nm_list)+' people to chat with!.')
     print('Family  : ' +str(f_len))
     print('Friends : ' +str(m_list + nm_list))
+    if f_len+m_list+nm_list==0:
+        exhausted_the_list()
+    else:
+        pass
     chats_today = input("How many Chats you plan today?\n recommended Chats: 6 \n maximum value: "+str(f_len + m_list + nm_list)+ "\n >> ")
     if type(chats_today) == int:
         chats_today = input("PLEASE ENTER A VALID INT VALUE\n recommended Chats: 6 \n maximum value: " + str(f_len + m_list + nm_list) + "\n >> ")
@@ -157,7 +213,7 @@ def start_timer():
 
         #print("122 "+name)
         if person_bg is '9':
-            if token < 3:
+            if token < 6:
                 token = token +1
                 print(str(token))
                 continue
@@ -223,8 +279,7 @@ def get_a_name(what, location):
 
 
 def check_new_name(check_this, in_here):
-    this_month = "/Users/alikhundmiri/Desktop/pythons/chat_remainder/Archive/"+in_here
-    archives = open(this_month, 'r')
+    archives = open(in_here, 'r')
     check = archives.read()
     archives.close()
     if check_this is "ocxrttty":
@@ -270,38 +325,10 @@ def chat_(chat_name, chat_bg):
 
 def get_chat_message(background , c_name):
     g = random.randint(0, 8)
-    m_salutations = "As Salam Wa Alaykum, "
-    greeting_message_family = ['\n Kaise hai aap log?',
-                               '\n Khariyath?',
-                               '\n Kya chalra aaj kal?',
-                               '\n kaise hai ghar pay sab?',
-                               '\n How are you',
-                               '\n khariyath bhai ghar pay sab?',
-                               '\n Kya haal hai? all fine?',
-                               '\n hows life? sab khariyath?',
-                               '\n kahan hai aaj kal?']
-    greeting_message_m_friends = ['\n sup',
-                                  '\n Hi!!? Sup!',
-                                  '\n Hello!!?',
-                                  '\n Hows it going?',
-                                  '\n How are you',
-                                  '\n sup bro? all Good?',
-                                  '\n Heyy!! hows life?',
-                                  '\n hows life? sab khariyath?',
-                                  '\n where are you these days?']
-    greeting_message_nm_friends = ['hey!! \n sup',
-                                   'hi bro! \n Sup!',
-                                   'How are you \n Hello!!?',
-                                   'Hows is going? \n *it',
-                                   'How are you? \n all going good?',
-                                   'Sup bro? \n all Good?',
-                                   'Heyy!! bro? you there? \n hows life?',
-                                   'hows life? \n sab khariyath?',
-                                   'wherw are you these days? \n *Where']
     if background is "family":
-        message = m_salutations + c_name +"!. "+greeting_message_family[g]
+        message = custom_salutations + c_name +"!. \n"+greeting_message_family[g]
     elif background is 'fnd_m':
-        message = m_salutations + c_name +"!!?. :) "+greeting_message_m_friends[g]
+        message = custom_salutations + c_name +"!!?. :) \n"+greeting_message_m_friends[g]
     elif background is 'fnd_nm':
         message = c_name +"!... "+greeting_message_nm_friends[g]
     else:
@@ -319,15 +346,14 @@ def wait(web_opening_time=10):
 
 if __name__ == "__main__":
     print("Launching Script...")
-    #Update the list by reading text files from Archive and List directory
+    #update the custom chat messages
+    update_chats()
+    #Update the contact list by reading text files from Archive and List directory
     update_list()
-
     #   open webDriver
     driver = None
-    web_driver_load()
-
+    #web_driver_load()
     #  launch whatsapp
-    launch_whatsapp()
-
+    #launch_whatsapp()
     #   Start the timer
     start_timer()

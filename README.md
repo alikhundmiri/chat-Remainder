@@ -1,6 +1,7 @@
 #Whatsapp Automator
 
-ONLY FOR EDUCATIONAL/PERSONAL PURPOSE
+ONLY FOR EDUCATIONAL/PERSONAL PURPOSE.
+
 DO NOT use it for advertisement purpose!, your Whatsapp Account WILL BE BLOCKED.
 
 #How it works

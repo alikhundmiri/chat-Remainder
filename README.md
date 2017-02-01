@@ -1,6 +1,7 @@
 #Whatsapp Automator
 
-ONLY FOR PERSONAL PURPOSE
+ONLY FOR EDUCATIONAL/PERSONAL PURPOSE
+DO NOT use it for advertisement purpose!, your Whatsapp Account WILL BE BLOCKED.
 
 #How it works
 1. Fill the text files in directory with your relatives, friends and collegues in the respective directory
@@ -12,7 +13,7 @@ ONLY FOR PERSONAL PURPOSE
 
 you will need the following:
 [python 3](https://www.python.org/ftp/python/3.6.0/python-3.6.0-macosx10.6.pkg)
-Selenium        'pip install Selenium'
+Selenium
 [Selenium Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/downloads)
 
 If you dont have Chrome Driver installed check out this [video for Mac.](https://www.youtube.com/watch?v=XFVXaC41Xac)

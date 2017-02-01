@@ -1,8 +1,8 @@
-##Whatsapp Automator
+#Whatsapp Automator
 
 ONLY FOR PERSONAL PURPOSE
 
-##How it works
+#How it works
 1. Fill the text files in directory with your relatives, friends and collegues in the respective directory
 2. Fill in the custom text you want to send them. Keep in mind, these will be shuffled and a random text will be sent to one of the people in contacts list
 3. in the Script Write your name in the string value given. (on the line 11, i.e. Eleven)
@@ -13,10 +13,8 @@ ONLY FOR PERSONAL PURPOSE
 you will need the following:
 [python 3](https://www.python.org/ftp/python/3.6.0/python-3.6.0-macosx10.6.pkg)
 [Selenium Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/downloads)
-
+https://facebook.com
 
 The necessary dependencies are in the requirements.txt file so just run this before running the actual code to get them installed
 
-``
-pip install -r requirements.txt
-``
+''pip install -r requirements.txt''

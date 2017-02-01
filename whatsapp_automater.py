@@ -55,19 +55,17 @@ def update_list():
 def web_driver_load():
     global driver
     print("Launching Chrome")
-    #driver = webdriver.Chrome()
+    driver = webdriver.Chrome()
     print("Chrome Launched!")
 
 def launch_whatsapp():
     print("Opening Whatsapp Web")
 
-    #driver.get('https://web.whatsapp.com/')
+    driver.get('https://web.whatsapp.com/')
 
     #replace this with an iplicit timer
-    #i.e. wait till the page is loaded
     print("Please Scan you phone to Login Whatsapp web")
-    #wait(20)
-    #if failed to login, go to fail_to_login
+    wait(20)
 
 def fail_to_login():
     print("Failed to Sign in to Whatsapp Web")
@@ -77,6 +75,7 @@ def fail_to_login():
 def exhausted_the_list():
     print("Hey! "+your_name+"!, You have Exhausted the chat list for the month of " + d_.strftime("%B")+".")
     exit()
+
 def generate_abc(length):
     numa = 0
     a__ = [numa, ]
@@ -94,7 +93,6 @@ def generate_abc(length):
         c__.append(numc)
 
     return [a__, b__, c__]
-    pass
 
 #change it to make other list accessable
 def start_timer():
@@ -175,7 +173,6 @@ def start_timer():
 
 
 def get_chatlist(what):
-    # P O I N T   O F   I S S U E ! ! ! !
     name = get_a_name(what, file_name)
     if name == None:
         #print("name is None")
@@ -185,7 +182,6 @@ def get_chatlist(what):
         # print("105 " + name)
         return name
 
-#select a name from the list
 def get_a_name(what, location):
     # print("148")
     new_name = "ocxrttty"
@@ -244,15 +240,15 @@ def chat_(chat_name, chat_bg):
 
     #find the search box
     #web_obj = driver.find_element_by_xpath('//*[@id="side"]/div[2]/div/label/input')
+
     # enter the search name
     #web_obj.send_keys(chat_name)
-    # get the correct chat from query list
-    #replace this with explicit timer
 
+    #replace this with explicit timer
     #time.sleep(3)
 
     #web_obj.send_keys(Keys.RETURN)
-#    print("\t\t\tWe are in the chat now, with : " + chat_name)
+    #print("\t\t\tWe are in the chat now, with : " + chat_name)
 
     #Search for the Message text box
     #chat_obj = driver.find_element_by_xpath("//div[@contenteditable='true']")

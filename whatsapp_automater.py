@@ -164,12 +164,7 @@ def start_timer():
     b__ = []
     c__ = []
     token = 0
-    print(list_1)
-    print(fnd_m_list)
-    print(fnd_nm_list)
     for i in range(0, int(chats_today)):
-        wait(60*60)
-        name = ''
         person_bg = '9'
         print("\n\tInitiating Selection " + str(i+1) + "\n")
         if i == 0:
@@ -181,6 +176,18 @@ def start_timer():
             else:
                 largest = nm_list
             a__, b__, c__ = generate_abc(largest)
+            a_ = random.randint(3, 15)
+            time.sleep(a_)
+            b_ = random.randint(7, 27)
+            time.sleep(b_)
+
+        else:
+            wait(10 * 60)
+            c_ = random.randint(7, 27)
+            time.sleep(c_)
+            d_ = random.randint(4, 56)
+            time.sleep(d_)
+
         if i in a__:
             if len(list_1) != 0:
                 person_bg = "family"

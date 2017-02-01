@@ -18,14 +18,10 @@ Selenium
 
 If you dont have Chrome Driver installed check out this [video for Mac.](https://www.youtube.com/watch?v=XFVXaC41Xac)
 
-for windows:
-1. Download the suitable Chrome driver from [here.](https://sites.google.com/a/chromium.org/chromedriver/downloads)
-2. Extract the file and keep it in directory(folder) of your desire, usually in c drive.
-3. in the script, Add the following line 
-       'chrome_path = r"<YOUR DIRECTORY HERE>"'
-4. for more information check out this [video.](https://www.youtube.com/watch?v=bhYulVzYRng)
+#for windows:
+Check out this [video.](https://www.youtube.com/watch?v=bhYulVzYRng)
 
 
 The necessary dependencies are in the requirements.txt file so just run this before running the actual code to get them installed
 
-''pip install -r requirements.txt''
+'pip install -r requirements.txt'

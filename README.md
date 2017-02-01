@@ -22,7 +22,7 @@ DO NOT use it for advertisement purpose!, your Whatsapp Account WILL BE BLOCKED.
 #How do you work it?
 1. write the name of people you want to be in constant touch with.
 2. write the custom texts.
-3. start the program in command line by 'python3 whatsapp_automater.py'.
+3. start the program in command line by `python3 whatsapp_automater.py`.
 4. let it read the names and texts.
 5. feed in the number of people you want to chat today.
 now it will send an *initiative message* to random people from the list*s*
@@ -30,17 +30,23 @@ now it will send an *initiative message* to random people from the list*s*
 #Installation
 
 you will need the following:
+##Preinstalls:
 [python 3](https://www.python.org/ftp/python/3.6.0/python-3.6.0-macosx10.6.pkg)
 Selenium
 [Selenium Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/downloads)
 
-If you dont have Chrome Driver installed check out this [video for Mac.](https://www.youtube.com/watch?v=XFVXaC41Xac)
+
+##for Mac and Linux:
+If you dont have Chrome Driver installed 
+Check out this [video for Mac.](https://www.youtube.com/watch?v=XFVXaC41Xac)
 
 ##for windows:
+If you dont have Chrome Driver installed 
 Check out this [video.](https://www.youtube.com/watch?v=bhYulVzYRng)
 
-
+##dependencies:
 The necessary dependencies are in the requirements.txt file so just run this before running the actual code to get them installed
-'''
+```
 pip install -r requirements.txt
-'''
+```
+

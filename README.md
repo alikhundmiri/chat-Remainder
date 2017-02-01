@@ -17,7 +17,7 @@ DO NOT use it for advertisement purpose!, your Whatsapp Account WILL BE BLOCKED.
 
 #What it does
 1. Starts the conversations with the people in the list
-*thats it*
+2. *thats it*
 
 #How do you work it?
 1. write the name of people you want to be in constant touch with.
@@ -36,10 +36,11 @@ Selenium
 
 If you dont have Chrome Driver installed check out this [video for Mac.](https://www.youtube.com/watch?v=XFVXaC41Xac)
 
-#for windows:
+##for windows:
 Check out this [video.](https://www.youtube.com/watch?v=bhYulVzYRng)
 
 
 The necessary dependencies are in the requirements.txt file so just run this before running the actual code to get them installed
-
-'pip install -r requirements.txt'
+'''
+pip install -r requirements.txt
+'''

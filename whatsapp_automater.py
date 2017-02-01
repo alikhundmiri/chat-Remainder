@@ -66,16 +66,12 @@ def update_chats():
 
 
 def update_list():
-    # os.chdir("Archive")
     #if file for month doesnt exist, make one
     if not os.path.isfile(file_name):
         write_txt(file_name, "")
-
     file_chats = open(file_name,'r')
     fc = file_chats.read()
 
-    #c1 = os.path.join(script_dir, contact_1)
-    #file_a = open(c1, 'r')
     file_a = open('List/family.txt', 'r')
     line_f = file_a.readlines()
     for names_list_1 in line_f:
@@ -111,9 +107,7 @@ def web_driver_load():
 
 def launch_whatsapp():
     print("Opening Whatsapp Web")
-
     driver.get('https://web.whatsapp.com/')
-
     #replace this with an iplicit timer
     print("Please Scan you phone to Login Whatsapp web")
     wait(20)
@@ -135,7 +129,6 @@ def generate_abc(length):
     b__ = [numb, ]
     numc = 2
     c__ = [numc, ]
-    #length = 25
     for i in range(0, length):
         numa = numa + 3
         a__.append(numa)
@@ -143,12 +136,9 @@ def generate_abc(length):
         b__.append(numb)
         numc = numc + 3
         c__.append(numc)
-
     return [a__, b__, c__]
 
-#change it to make other list accessable
 def start_timer():
-    #start the timer
     f_len = len(list_1)
     m_list = len(fnd_m_list)
     nm_list = len(fnd_nm_list)
@@ -178,11 +168,10 @@ def start_timer():
     print(fnd_m_list)
     print(fnd_nm_list)
     for i in range(0, int(chats_today)):
-        #wait(30*60)
-        wait(1 * 1)
+        wait(60*60)
         name = ''
         person_bg = '9'
-        print("\n\n\tInitiating Selection " + str(i+1) + "\n\n")
+        print("\n\tInitiating Selection " + str(i+1) + "\n")
         if i == 0:
             #get the length of largest array and send it to generate_abc
             if (f_len > m_list) and (f_len > nm_list):
@@ -210,8 +199,6 @@ def start_timer():
                 print("\t\tChat with: Friend")
             else:
                 pass
-
-        #print("122 "+name)
         if person_bg is '9':
             if token < 6:
                 token = token +1
@@ -226,20 +213,14 @@ def start_timer():
             else:
                 chat_(name, person_bg)
 
-
-
 def get_chatlist(what):
     name = get_a_name(what, file_name)
     if name == None:
-        #print("name is None")
-        #name = get_a_name(what, file_name)
         get_chatlist(what)
     else:
-        # print("105 " + name)
         return name
 
 def get_a_name(what, location):
-    # print("148")
     new_name = "ocxrttty"
     if what == 'family':
         if len(list_1) > 0:
@@ -262,7 +243,6 @@ def get_a_name(what, location):
         elif len(fnd_nm_list) == 0:
             print("You have Talked to all the People in nm_list")
             new_name = "ocxrttty"
-    #print("170 " +new_name)
     new_name = new_name.replace('\n','')
     #if name is in archives, send to check_new_name(what, where)
     if check_new_name(new_name, location):
@@ -272,7 +252,6 @@ def get_a_name(what, location):
         if new_name is "ocxrttty":
             pass
         else:
-            #print("175 "+new_name)
             Write_this =" @ " + time.ctime() + " with " + new_name
             write_txt(location, Write_this)
         return new_name
@@ -294,33 +273,33 @@ def check_new_name(check_this, in_here):
 def chat_(chat_name, chat_bg):
 
     #find the search box
-    #web_obj = driver.find_element_by_xpath('//*[@id="side"]/div[2]/div/label/input')
+    web_obj = driver.find_element_by_xpath('//*[@id="side"]/div[2]/div/label/input')
 
     # enter the search name
-    #web_obj.send_keys(chat_name)
+    web_obj.send_keys(chat_name)
 
     #replace this with explicit timer
-    #time.sleep(3)
+    time.sleep(3)
 
-    #web_obj.send_keys(Keys.RETURN)
-    #print("\t\t\tWe are in the chat now, with : " + chat_name)
+    web_obj.send_keys(Keys.RETURN)
+    print("\t\t\tWe are in the chat now, with : " + chat_name)
 
     #Search for the Message text box
-    #chat_obj = driver.find_element_by_xpath("//div[@contenteditable='true']")
+    chat_obj = driver.find_element_by_xpath("//div[@contenteditable='true']")
 
-    #time.sleep(3)
+    time.sleep(3)
 
     #Get the text to write
     text = get_chat_message(chat_bg, chat_name)
 
     #Write the message in text box
-    #chat_obj.send_keys(text)
+    chat_obj.send_keys(text)
     print("163 \t\t\tMessage ready: \n" + text)
 
-    #time.sleep(3)
+    time.sleep(3)
 
     #hit enter
-    #chat_obj.send_keys(Keys.RETURN)
+    chat_obj.send_keys(Keys.RETURN)
     print("168 \t\t\tMessage sent!")
 
 def get_chat_message(background , c_name):
@@ -352,8 +331,8 @@ if __name__ == "__main__":
     update_list()
     #   open webDriver
     driver = None
-    #web_driver_load()
+    web_driver_load()
     #  launch whatsapp
-    #launch_whatsapp()
+    launch_whatsapp()
     #   Start the timer
     start_timer()

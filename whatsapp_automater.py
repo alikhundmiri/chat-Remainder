@@ -1,6 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from random import randrange
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+
 import random
 import time
 import os
@@ -8,22 +11,52 @@ import datetime
 
 ##############################################################################
 #change your Name here:
-your_name = "Ali"
+your_name = ""
 #change the salutation here:
 custom_salutations = "As Salam Wa Alaykum, "
 ##############################################################################
-
 #DO NOT CHANGE THE CODE BELOW
 d_ = datetime.datetime.now()
 month = d_.strftime("%B")
-your_name_ = your_name.replace(" ", "_")
-file_name = "Archive/"+your_name_+"_chat_list_" + month + ".txt"
 list_1 = []
 fnd_m_list = []
 fnd_nm_list = []
 greeting_message_family = []
 greeting_message_m_friends = []
 greeting_message_nm_friends = []
+
+def web_driver_load():
+    global driver
+    print("Launching Chrome")
+    driver = webdriver.Chrome()
+    print("Chrome Launched!")
+
+def launch_whatsapp():
+    print("Opening Whatsapp Web")
+    driver.get('https://web.whatsapp.com/')
+    #replace this with an iplicit timer
+    print("Please Scan you phone to Login Whatsapp web")
+    # wait for 1 minute unless phone is scanned
+    #wait(20)
+    element = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "side")))
+
+    if element:
+        open_info = driver.find_element_by_xpath('//*[@id="side"]/header/div[1]/div/div')
+        open_info.click()
+        wait(3)
+        chate_name = driver.find_element_by_xpath('//*[@id="app"]/div/div/div[1]/span[1]/div/div/div/div[2]/div[2]/div/div[2]/div[1]/div')
+        print("Logged In as " + chate_name.text)
+        back_to_chats = driver.find_element_by_xpath('//*[@id="app"]/div/div/div[1]/span[1]/div/div/header/div/div/span')
+        back_to_chats.click()
+        return chate_name.text
+
+    else:
+        fail_to_login()
+
+def fail_to_login():
+    print("Failed to Sign in to Whatsapp Web")
+    print("Quiting Script")
+    exit()
 
 def update_chats():
     here_is_us = os.getcwd()
@@ -64,7 +97,6 @@ def update_chats():
     else:
         pass
 
-
 def update_list():
     #if file for month doesnt exist, make one
     if not os.path.isfile(file_name):
@@ -98,24 +130,6 @@ def update_list():
                 fnd_nm_list.append(fnd_nm)
     file_nm.close()
     file_chats.close()
-
-def web_driver_load():
-    global driver
-    print("Launching Chrome")
-    driver = webdriver.Chrome()
-    print("Chrome Launched!")
-
-def launch_whatsapp():
-    print("Opening Whatsapp Web")
-    driver.get('https://web.whatsapp.com/')
-    #replace this with an iplicit timer
-    print("Please Scan you phone to Login Whatsapp web")
-    wait(20)
-
-def fail_to_login():
-    print("Failed to Sign in to Whatsapp Web")
-    print("Quiting Script")
-    exit()
 
 def exhausted_the_list():
     print("Hey! "+your_name+"!, You have Exhausted the chat list for the month of " + d_.strftime("%B")+".")
@@ -263,7 +277,6 @@ def get_a_name(what, location):
             write_txt(location, Write_this)
         return new_name
 
-
 def check_new_name(check_this, in_here):
     archives = open(in_here, 'r')
     check = archives.read()
@@ -275,7 +288,6 @@ def check_new_name(check_this, in_here):
             return True
         else:
             return False
-
 
 def chat_(chat_name, chat_bg):
 
@@ -301,13 +313,13 @@ def chat_(chat_name, chat_bg):
 
     #Write the message in text box
     chat_obj.send_keys(text)
-    print("163 \t\t\tMessage ready: \n" + text)
+    print("\t\t\tMessage ready: \n" + text)
 
     time.sleep(3)
 
     #hit enter
     chat_obj.send_keys(Keys.RETURN)
-    print("168 \t\t\tMessage sent!")
+    print("\t\t\tMessage sent!")
 
 def get_chat_message(background , c_name):
     g = random.randint(0, 8)
@@ -332,14 +344,13 @@ def wait(web_opening_time=10):
 
 if __name__ == "__main__":
     print("Launching Script...")
-    #update the custom chat messages
-    update_chats()
-    #Update the contact list by reading text files from Archive and List directory
-    update_list()
-    #   open webDriver
     driver = None
     web_driver_load()
-    #  launch whatsapp
-    launch_whatsapp()
-    #   Start the timer
+    your_name = launch_whatsapp()
+    your_name_ = your_name.replace(" ", "_")
+    file_name = "Archive/" + your_name_ + "_chat_list_" + month + ".txt"
+    update_chats()
+    update_list()
     start_timer()
+
+#   open webDriver

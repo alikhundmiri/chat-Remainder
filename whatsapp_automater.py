@@ -10,12 +10,11 @@ import os
 import datetime
 
 ##############################################################################
-#change your Name here:
-your_name = ""
 #change the salutation here:
 custom_salutations = "As Salam Wa Alaykum, "
 ##############################################################################
 #DO NOT CHANGE THE CODE BELOW
+your_name = ""
 d_ = datetime.datetime.now()
 month = d_.strftime("%B")
 list_1 = []

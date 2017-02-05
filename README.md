@@ -29,6 +29,7 @@ DO NOT use it for advertisement purpose!, your Whatsapp Account WILL BE BLOCKED.
 now it will send an *initiative message* to random people from the list*s*
 
 Message Pattern:
+
 1. People in `List/family.txt` will get messages from `chat_templates/chats_1.txt` with Salutation
 2. People in `List/friend_n.txt` will get messages from `chat_templates/chats_2.txt` with Salutation
 3. People in `List/friends_nm.txt` will get messages from `chat_templates/chats_3.txt` without Saluation
@@ -56,4 +57,4 @@ The necessary dependencies are in the requirements.txt file so just run this bef
 ```
 pip install -r requirements.txt
 ```
-``
+

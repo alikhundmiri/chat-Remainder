@@ -28,9 +28,10 @@ DO NOT use it for advertisement purpose!, your Whatsapp Account WILL BE BLOCKED.
 5. feed in the number of people you want to chat today.
 now it will send an *initiative message* to random people from the list*s*
 
-People in `List/family.txt` will get messages from `chat_templates/chats_1.txt` with Salutation
-People in `List/friend_n.txt` will get messages from `chat_templates/chats_2.txt` with Salutation
-People in `List/friends_nm.txt` will get messages from `chat_templates/chats_3.txt` without Saluation
+Message Pattern:
+1. People in `List/family.txt` will get messages from `chat_templates/chats_1.txt` with Salutation
+2. People in `List/friend_n.txt` will get messages from `chat_templates/chats_2.txt` with Salutation
+3. People in `List/friends_nm.txt` will get messages from `chat_templates/chats_3.txt` without Saluation
 
 
 #Installation

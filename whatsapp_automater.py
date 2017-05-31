@@ -23,6 +23,7 @@ fnd_nm_list = []
 greeting_message_family = []
 greeting_message_m_friends = []
 greeting_message_nm_friends = []
+launch_count = 0
 
 def web_driver_load():
     global driver
@@ -35,9 +36,10 @@ def launch_whatsapp():
     driver.get('https://web.whatsapp.com/')
     #replace this with an iplicit timer
     print("Please Scan you phone to Login Whatsapp web")
-    # wait for 1 minute unless phone is scanned
-    #wait(20)
-    element = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "side")))
+    try:
+        element = WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.ID, "side")))
+    except:
+        raise fail_to_login()
 
     if element:
         open_info = driver.find_element_by_xpath('//*[@id="side"]/header/div[1]/div/div')
@@ -54,6 +56,7 @@ def launch_whatsapp():
 
 def fail_to_login():
     print("Failed to Sign in to Whatsapp Web")
+    driver.get('')
     print("Quiting Script")
     exit()
 
@@ -179,7 +182,7 @@ def start_timer():
     token = 0
     for i in range(0, int(chats_today)):
         person_bg = '9'
-        print("\n\tInitiating Selection " + str(i+1) + "\n")
+        print("\n\tInitiating Selection " + str(i+1) + "\n" )
         if i == 0:
             #get the length of largest array and send it to generate_abc
             if (f_len > m_list) and (f_len > nm_list):
@@ -195,10 +198,11 @@ def start_timer():
             time.sleep(b_)
 
         else:
-            wait(10 * 60)
-            c_ = random.randint(7, 27)
+            # Wait between two consequtive chats initiations
+            wait(3 * 60)#10 minutes and random seconds
+            c_ = random.randint(7, 217)
             time.sleep(c_)
-            d_ = random.randint(4, 56)
+            d_ = random.randint(4, 156)
             time.sleep(d_)
 
         if i in a__:

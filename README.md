@@ -7,7 +7,7 @@ DO NOT use it for advertisement purpose!, your Whatsapp Account WILL BE BLOCKED.
 ## new detailed Walkthrough
 Check out the new walkthrough i wrote for this here http://www.alikhundmiri.com/blog/whatsapp-automator-a-guide-for-abecedarian-program or click [here][1]
 
-[1][http://www.alikhundmiri.com/blog/whatsapp-automator-a-guide-for-abecedarian-program]
+
 
 
 # How it works
@@ -63,3 +63,5 @@ The necessary dependencies are in the requirements.txt file so just run this bef
 ```
 pip install -r requirements.txt
 ```
+
+ [1]:http://www.alikhundmiri.com/blog/whatsapp-automator-a-guide-for-abecedarian-program
